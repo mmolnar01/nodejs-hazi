@@ -7,20 +7,28 @@ Villamosok és kocsiszínek
 
 
 GET /					-index.html
-POST /login
+    renderMw(index.html)
 
 GET /kocsiszin				-kocsiszinek.html
+    getKocsiszinekMw
+    renderMw(kocsiszinek.html)
 
-GET /kocsiszin/new			-kocsiszinform-html (NEW)
-POST /kocsiszin/new
+GET, POST /kocsiszin/new			-kocsiszinform.html (NEW)
+    renderMw(kocsiszinform.html) (Ha volt érték beküldve, akkor a form elemek azzal tölrődnek fel.)
+    saveKocsiszinMw (Ha nincs postban elküldve az adat, akkor next()-et hív, ha van, akkor megpróbálja elmenteni. Ha sikerül, átirányít a kocsiszínekhez.)
 
-GET /kocsiszin/edit/:kocsiszinid		-kocsiszinform-html (EDIT)
-POST /kocsiszin/edit/:kocsiszinid
+GET, POST /kocsiszin/edit/:kocsiszinid		-kocsiszinform.html (EDIT)
+    getKocsiszinMw (Lekérdezi egy kocsiszín adatait az adatbázisból)
+    saveKocsiszinMw
+    renderMw(kocsiszinform.html) (Ha volt érték beküldve, akkor a form elemek azzal tölrődnek fel.)
 GET /kocsiszin/del/:kocsiszinid
+    getKocsiszinMw
+    delKocsiszinMw (Kitörli a kívánt kocsiszínt az adatbázisból)
 
 GET /villamos/:kocsiszinid		-villamosok.html
 
 GET /villamos/:kocsiszinid/new		-villamosform.html (NEW)
+    renderMw(villamosform.html)
 POST /villamos/:kocsiszinid/new
 
 GET /villamos/:kocsiszinid/edit/:villamosid	-villamosform.html (EDIT)
