@@ -1,0 +1,28 @@
+Villamosok és kocsiszínek
+- index.html: Főoldal, átirányítás a kocsiszínekhez
+- kocsiszinek.html: Táblázat (Edit, Delete, New, Villamosok listájához átírányítás)
+- kocsiszinform.html: Kocsiszín Edit, Save, Cancel
+- villamosok.html: Táblázat (Edit, Delete, New)
+- villamosform.html: Villamos Edit, Save, Cancel
+
+
+GET /					-index.html
+POST /login
+
+GET /kocsiszin				-kocsiszinek.html
+
+GET /kocsiszin/new			-kocsiszinform-html (NEW)
+POST /kocsiszin/new
+
+GET /kocsiszin/edit/:kocsiszinid		-kocsiszinform-html (EDIT)
+POST /kocsiszin/edit/:kocsiszinid
+GET /kocsiszin/del/:kocsiszinid
+
+GET /villamos/:kocsiszinid		-villamosok.html
+
+GET /villamos/:kocsiszinid/new		-villamosform.html (NEW)
+POST /villamos/:kocsiszinid/new
+
+GET /villamos/:kocsiszinid/edit/:villamosid	-villamosform.html (EDIT)
+POST /villamos/:kocsiszinid/edit/:villamosid
+GET /villamos/:kocsiszinid/:villamosid/del
