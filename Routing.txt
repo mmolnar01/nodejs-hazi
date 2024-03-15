@@ -10,16 +10,16 @@ Middlewarek:
     renderMw
 
     middlewares/kocsiszin
-        getKocsiszinekMw.js
-        getKocsiszinMw.js
-        saveKocsiszinMw.js
-        delKocsiszinMw.js: res.locals.kocsiszin objektumot törli
+        getKocsiszinekMw.js: Lekérdezi az összes kocsiszínt az adatbázisból.
+        getKocsiszinMw.js: Lekérdezi egy kocsiszin adatait az adatbázisból.
+        saveKocsiszinMw.js: Elmenti egy kocsiszín adatait az adatbázisba.
+        delKocsiszinMw.js: res.locals.kocsiszin objektumot törli.
 
     middlewares/villamos
-        getVillamosokMw,js
-        getVillamosMw.js
-        saveVillamosMw.js
-        delVillamosMw.js: res.locals.villamos objektumot törli
+        getVillamosokMw.js: Lekérdezi az összes vilammost az adatbázisból.
+        getVillamosMw.js: Lekérdezi egy villamos adatait az adatbázisból.
+        saveVillamosMw.js: Elmenti egy villamos adatait az adatbázisba.
+        delVillamosMw.js: res.locals.villamos objektumot törli.
 
 
 GET /					-index.html
