@@ -65,6 +65,5 @@ module.exports = function (app) {
         getVillamosMw(objRepo),
         delVillamosMw(objRepo),
         renderMw(objRepo, 'villamosform'));
-
-
-}
+        
+};
