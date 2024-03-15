@@ -6,6 +6,22 @@ Villamosok és kocsiszínek
 - villamosform.html: Villamos Edit, Save, Cancel
 
 
+Middlewarek:
+    renderMw
+
+    middlewares/kocsiszin
+        getKocsiszinekMw.js
+        getKocsiszinMw.js
+        saveKocsiszinMw.js
+        delKocsiszinMw.js: res.locals.kocsiszin objektumot törli
+
+    middlewares/villamos
+        getVillamosokMw,js
+        getVillamosMw.js
+        saveVillamosMw.js
+        delVillamosMw.js: res.locals.villamos objektumot törli
+
+
 GET /					-index.html
     renderMw(index.html)
 
