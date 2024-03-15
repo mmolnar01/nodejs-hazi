@@ -9,28 +9,46 @@ Villamosok és kocsiszínek
 GET /					-index.html
     renderMw(index.html)
 
+
+
+
+=== Kocsiszínek ===
+
 GET /kocsiszin				-kocsiszinek.html
     getKocsiszinekMw
     renderMw(kocsiszinek.html)
 
 GET, POST /kocsiszin/new			-kocsiszinform.html (NEW)
-    renderMw(kocsiszinform.html) (Ha volt érték beküldve, akkor a form elemek azzal tölrődnek fel.)
+    renderMw(kocsiszinform.html) (Ha volt érték beküldve, akkor a form elemek azzal töltődnek fel.)
     saveKocsiszinMw (Ha nincs postban elküldve az adat, akkor next()-et hív, ha van, akkor megpróbálja elmenteni. Ha sikerül, átirányít a kocsiszínekhez.)
 
 GET, POST /kocsiszin/edit/:kocsiszinid		-kocsiszinform.html (EDIT)
     getKocsiszinMw (Lekérdezi egy kocsiszín adatait az adatbázisból)
     saveKocsiszinMw
-    renderMw(kocsiszinform.html) (Ha volt érték beküldve, akkor a form elemek azzal tölrődnek fel.)
+    renderMw(kocsiszinform.html) (Ha volt érték beküldve, akkor a form elemek azzal töltődnek fel.)
+
 GET /kocsiszin/del/:kocsiszinid
     getKocsiszinMw
-    delKocsiszinMw (Kitörli a kívánt kocsiszínt az adatbázisból)
+    delKocsiszinMw (Kitörli a kívánt kocsiszínt az adatbázisból, ha az létezik)
+
+
+
+
+=== VILLAMOSOK ===
 
 GET /villamos/:kocsiszinid		-villamosok.html
-
-GET /villamos/:kocsiszinid/new		-villamosform.html (NEW)
+    
+GET, POST /villamos/:kocsiszinid/new		-villamosform.html (NEW)
+    getKocsiszinMw
+    getVillamosMw (Lekérdezi egy villamos adatait az adatbázisból)
     renderMw(villamosform.html)
-POST /villamos/:kocsiszinid/new
 
-GET /villamos/:kocsiszinid/edit/:villamosid	-villamosform.html (EDIT)
-POST /villamos/:kocsiszinid/edit/:villamosid
+GET, POST /villamos/:kocsiszinid/edit/:villamosid	-villamosform.html (EDIT)
+    getKocsiszinMw
+    getVillamosMw
+    saveVillamosMw (Ha nincs postban elküldve az adat, akkor next()-et hív, ha van, akkor megpróbálja elmenteni. Ha sikerül, átirányít a villamosokhoz.)
+    renderMw(villamosform.html)
+
 GET /villamos/:kocsiszinid/:villamosid/del
+    getVillamosMw
+    delVillamosMw (Kitörli a kívánt villamost az adatbázisból, ha az létezik)
