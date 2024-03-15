@@ -37,6 +37,9 @@ GET /kocsiszin/del/:kocsiszinid
 === VILLAMOSOK ===
 
 GET /villamos/:kocsiszinid		-villamosok.html
+    getKocsiszinMw (Lekérdezi egy kocsiszin adatait az adatbázisból)
+    getVillamosokMw (Lekérdezi egy adott kocsiszínhez tartozó villamosokat az adatbázisból)
+    renderMw(villamosok.html)
     
 GET, POST /villamos/:kocsiszinid/new		-villamosform.html (NEW)
     getKocsiszinMw
