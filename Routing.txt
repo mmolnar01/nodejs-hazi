@@ -9,13 +9,13 @@ Villamosok és kocsiszínek
 Middlewarek:
     renderMw
 
-    middlewares/kocsiszin
+    middleware/kocsiszin
         getKocsiszinekMw.js: Lekérdezi az összes kocsiszínt az adatbázisból.
         getKocsiszinMw.js: Lekérdezi egy kocsiszin adatait az adatbázisból.
         saveKocsiszinMw.js: Elmenti egy kocsiszín adatait az adatbázisba.
         delKocsiszinMw.js: res.locals.kocsiszin objektumot törli.
 
-    middlewares/villamos
+    middleware/villamos
         getVillamosokMw.js: Lekérdezi az összes vilammost az adatbázisból.
         getVillamosMw.js: Lekérdezi egy villamos adatait az adatbázisból.
         saveVillamosMw.js: Elmenti egy villamos adatait az adatbázisba.
