@@ -1,0 +1,43 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col-6">
+        <div class="container">
+            <div class="mb-3">
+              <h1>Villamos 
+                <% if (typeof villamos === 'undefined') { %>
+                  létrehozás
+                <% } else { %>
+                  módosítás 
+                <% } %> 
+              </h1>
+            </div>
+            <form method="POST">
+              <input type="hidden" name="idhidden" value="<%=(typeof villamos === 'undefined') ? '' : villamos._id %>"/>
+                <div class="mb-3">
+                  <label for="inputTipus" class="form-label">Típus</label>
+                  <input type="text" class="form-control" id="tipus" name="tipus" value="<%=(typeof villamos === 'undefined') ? '' : villamos.tipus %>">
+                </div>
+                <div class="mb-3">
+                  <label for="inputPalyaszam" class="form-label">Pályaszám</label>
+                  <input type="number" class="form-control" id="palyaszam" name="palyaszam" value="<%=(typeof villamos === 'undefined') ? '' : villamos.palyaszam %>">
+                </div>
+                <div class="mb-3">
+                    <label for="inputForgalombaAllas" class="form-label">Forgalomba állás</label>
+                    <input type="date" class="form-control" id="forgalomba" name="forgalomba" value="<%=(typeof villamos === 'undefined') ? '' : villamos.forgalomba %>">
+                  </div>
+                  <input type="submit" class="btn btn-primary" href="/villamos/123" value="Mentés és vissza"/>
+                <a class="btn btn-secondary" href="/villamos/123">Vissza</a>
+              </form>
+        </div>
+      </div>
+      <div class="col">
+        
+      </div>
+  </div>
+
+</div>
+<%- include('footer') -%>

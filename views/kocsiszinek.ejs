@@ -1,0 +1,49 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Kocsiszínek</h2>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th style="width: 0">
+                    &nbsp;
+                </th>
+                <th>
+                    Név
+                </th>
+                <th>
+                    Cím
+                </th>
+                <th>
+                    Dolgozók száma
+                </th>
+                <th style="width: 0;">
+                    &nbsp;
+                </th>
+            </tr>
+            <% kocsiszinek.forEach(function(kocsiszin){ %>
+                <tr>
+                    <td>
+                        <a href="/villamos/<%= kocsiszin._id %>" class="btn btn-sm btn-secondary">Villamosok</a>
+                    </td>
+                    <td>
+                        <%= kocsiszin.nev %>
+                    </td>
+                    <td>
+                        <%= kocsiszin.cim %>
+                    </td>
+                    <td>
+                        <%= kocsiszin.dolgozok %>
+                    </td>
+                    <td style="white-space: nowrap">
+                        <a href="/kocsiszin/edit/<%= kocsiszin._id %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></a>
+                        <a href="/kocsiszin/del/<%= kocsiszin._id %>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+        <a href="/kocsiszin/new" class="btn btn-block btn-primary">Új kocsiszín</a>
+      </div>
+    </div>
+  </div>
+<%- include('footer') -%>

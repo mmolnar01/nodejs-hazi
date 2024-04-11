@@ -1,0 +1,42 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col-6">
+        <div class="container">
+            <div class="mb-3">
+                <h1>Kocsiszín 
+                  <% if (typeof kocsiszin === 'undefined') { %>
+                    létrehozás
+                  <% } else { %>
+                    módosítás 
+                  <% } %> 
+                </h1>
+            </div>
+            <form method="POST">
+              <input type="hidden" name="idhidden" value="<%=(typeof kocsiszin === 'undefined') ? '' : kocsiszin._id %>"/>
+                <div class="mb-3">
+                    <label for="inputNev" class="form-label">Név</label>
+                    <input type="text" class="form-control" id="nev" name="nev" value="<%=(typeof kocsiszin === 'undefined') ? '' : kocsiszin.nev %>">
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputCim" class="form-label">Cím</label>
+                    <input type="text" class="form-control" id="cim" name="cim" value="<%=(typeof kocsiszin === 'undefined') ? '' : kocsiszin.cim %>">
+                  </div>
+                  <div class="mb-3">
+                      <label for="inputDolgozok" class="form-label">Dolgozók száma</label>
+                      <input type="number" class="form-control" id="dolgozok" name="dolgozok" value="<%=(typeof kocsiszin === 'undefined') ? '' : kocsiszin.dolgozok %>">
+                    </div>
+                    <input type="submit" class="btn btn-primary" href="/kocsiszin" value="Mentés és vissza"/>
+                    <a class="btn btn-secondary" href="/kocsiszin">Vissza</a>
+              </form>
+        </div>
+      </div>
+      <div class="col">
+        
+      </div>
+  </div>
+</div>
+<%- include('footer') -%>

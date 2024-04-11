@@ -1,5 +1,10 @@
 var express = require('express');
 var app = express();
+app.set('view engine', 'ejs');
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 app.use(express.static('static'));
 

@@ -15,36 +15,26 @@ module.exports = function (app) {
     
     var objRepo = {};
 
-    //Főoldal
-    app.use('/',
-        renderMw(objRepo, 'index'));
-
-    //Kocsiszínek megjelenítése
-    app.get('/kocsiszin',
-        getKocsiszinekMw(objRepo),
-        renderMw(objRepo, 'kocsiszinek'));
-
-    //Új kocsiszín hozzáadása
-    app.use('kocsiszin/new',
-        saveKocsiszinMw(objRepo),
-        renderMw(objRepo, 'kocsiszinform'));
-
     //Egy kocsiszín szerkesztése
-    app.use('kocsiszin/edit/:kocsiszinid',
+    app.use('/kocsiszin/edit/:kocsiszinid',
         getKocsiszinMw(objRepo),
         saveKocsiszinMw(objRepo),
         renderMw(objRepo, 'kocsiszinform'));
 
     //Kocsiszín törlése
-    app.get('kocsiszin/del/:kocsiszinid',
+    app.get('/kocsiszin/del/:kocsiszinid',
         getKocsiszinMw(objRepo),
         delKocsiszinMw(objRepo));
 
-    //Villamosok nézet egy adott kocsiszínnél
-    app.get('villamos/:kocsiszinid',
-        getKocsiszinMw(objRepo),
-        getVillamosokMw(objRepo),
-        renderMw(objRepo, 'villamosok'));
+    //Új kocsiszín hozzáadása
+    app.use('/kocsiszin/new',
+        saveKocsiszinMw(objRepo),
+        renderMw(objRepo, 'kocsiszinform'));
+
+    //Kocsiszínek megjelenítése
+    app.get('/kocsiszin',
+        getKocsiszinekMw(objRepo),
+        renderMw(objRepo, 'kocsiszinek'));
 
     //Új villamos hozzáadása egy kocsiszínhez
     app.use('/villamos/:kocsiszinid/new',
@@ -64,6 +54,17 @@ module.exports = function (app) {
         getKocsiszinMw(objRepo),
         getVillamosMw(objRepo),
         delVillamosMw(objRepo),
-        renderMw(objRepo, 'villamosform'));
+        //renderMw(objRepo, 'villamosform')
+        );
+
+    //Villamosok nézet egy adott kocsiszínnél
+    app.get('/villamos/:kocsiszinid',
+        getKocsiszinMw(objRepo),
+        getVillamosokMw(objRepo),
+        renderMw(objRepo, 'villamosok'));
+
+    //Főoldal
+    app.use('/',
+        renderMw(objRepo, 'index'));
         
 };

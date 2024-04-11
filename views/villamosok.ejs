@@ -1,0 +1,44 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Villamosok</h2>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    Típus
+                </th>
+                <th>
+                    Pályaszám
+                </th>
+                <th>
+                    Forgalomba állás
+                </th>
+                <th style="width: 0;">
+                    &nbsp;
+                </th>
+            </tr>
+            <% villamosok.forEach(function(villamos){ %>
+                <tr>
+                    <td>
+                        <%= villamos.tipus %>
+                    </td>
+                    <td>
+                        <%= villamos.palyaszam %>
+                    </td>
+                    <td>
+                        <%= villamos.forgalomba %>
+                    </td>
+                    <td style="white-space: nowrap">
+                        <a href="/villamos/123/edit/<%= villamos._id %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></a>
+                        <a href="/villamos/123/del/<%= villamos._id %>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+        <a href="/villamos/123/new" class="btn btn-block btn-primary">Új villamos</a>
+        <a href="/kocsiszin" class="btn btn-block btn-secondary">Vissza a kocsiszínekhez</a>
+      </div>
+    </div>
+  </div>
+<%- include('footer') -%>
