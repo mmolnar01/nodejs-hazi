@@ -5,23 +5,28 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectreposity) {
+
+    const KocsiszinModel = requireOption(objectreposity, 'KocsiszinModel');
+
     return function (req, res, next) {
 
-        res.locals.kocsiszinek = [
-            {
-                _id: 'id1',
-                nev: 'Baross',
-                cim: '8. ker',
-                dolgozok: '123'
-            },
-            {
-                _id: 'id2',
-                nev: 'Hungária',
-                cim: '8. ker',
-                dolgozok: '234'
-            }
-        ];
+        KocsiszinModel.find()
+        .then((kocsiszinek) => {
+            res.locals.kocsiszinek = kocsiszinek;
+            return next();
+        })
+        .catch((err) => {
+            return next(err);
+        })
 
-        return next();
+        /*KocsiszinModel.find({}, (err, kocsiszinek) => {
+            if (err) {
+                return next(err);
+            }
+
+            res.locals.kocsiszinek = kocsiszinek;
+            return next();
+        });*/
+
     };
 };

@@ -10,10 +10,15 @@ var getVillamosMw = require('../middleware/villamos/getVillamosMw');
 var delVillamosMw = require('../middleware/villamos/delVillamosMw');
 var saveVillamosMw = require('../middleware/villamos/saveVillamosMw');
 
+var KocsiszinModel = require('../models/kocsiszin');
+var VillamosModel = require('../models/villamos');
 
 module.exports = function (app) {
     
-    var objRepo = {};
+    var objRepo = {
+        KocsiszinModel: KocsiszinModel,
+        VillamosModel: VillamosModel
+    };
 
     //Egy kocsiszín szerkesztése
     app.use('/kocsiszin/edit/:kocsiszinid',
