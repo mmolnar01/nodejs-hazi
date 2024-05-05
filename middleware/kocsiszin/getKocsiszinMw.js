@@ -5,13 +5,16 @@
 module.exports = function (objectreposity) {
     return function (req, res, next) {
 
-        res.locals.kocsiszin = 
-        {
-            _id: 'id1',
-            nev: 'Baross',
-            cim: '8. ker',
-            dolgozok: '123'
-        };
+        KocsiszinModel.findOne(_)
+        .then((kocsiszinek) => {
+            res.locals.kocsiszinek = kocsiszinek;
+            return next();
+        })
+        .catch((err) => {
+            return next(err);
+        })
+
+
         
 
         return next();

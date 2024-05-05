@@ -19,14 +19,7 @@ module.exports = function (objectreposity) {
             return next(err);
         })
 
-        /*KocsiszinModel.find({}, (err, kocsiszinek) => {
-            if (err) {
-                return next(err);
-            }
-
-            res.locals.kocsiszinek = kocsiszinek;
-            return next();
-        });*/
+        
 
     };
 };
