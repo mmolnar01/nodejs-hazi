@@ -13,7 +13,7 @@ module.exports = function (objectreposity) {
         return res.locals.villamos.deleteOne()
         .then(() => {
             console.log("Torles sikeres");
-            return res.redirect(`/befott/${res.locals.kocsiszin._id}`);
+            return res.redirect(`/villamos/${res.locals.kocsiszin._id}`);
         })
         .catch((err) => {
             console.log("Torles sikertelen");

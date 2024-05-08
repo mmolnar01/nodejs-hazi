@@ -15,7 +15,7 @@ module.exports = function (objectreposity) {
         };
 
         if (typeof res.locals.villamos === 'undefined') {
-            res.locals.befott = new VillamosModel();
+            res.locals.villamos = new VillamosModel();
         }
 
         res.locals.villamos.tipus = req.body.tipus;
