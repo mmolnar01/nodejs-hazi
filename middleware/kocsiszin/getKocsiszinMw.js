@@ -2,21 +2,23 @@
  * Lekérdezi egy kocsiszín adatatait az adatbázisból
  */
 
-module.exports = function (objectreposity) {
-    return function (req, res, next) {
+const requireOption = require('../requireOption');
 
-        KocsiszinModel.findOne(_)
-        .then((kocsiszinek) => {
-            res.locals.kocsiszinek = kocsiszinek;
+module.exports = function (objectreposity) {
+
+    const KocsiszinModel = requireOption(objectreposity, 'KocsiszinModel');
+
+    return function (req, res, next) {
+        //console.log(req.params);
+        KocsiszinModel.findOne({_id: req.params.kocsiszinid})
+        .then((kocsiszin) => {
+            res.locals.kocsiszin = kocsiszin;
+            console.log(res.locals.kocsiszin)
             return next();
         })
         .catch((err) => {
             return next(err);
         })
-
-
-        
-
         return next();
     };
 };

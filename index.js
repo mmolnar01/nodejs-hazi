@@ -10,15 +10,18 @@ let output;
 });
 console.log(output);*/
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+
 app.set('view engine', 'ejs');
 
-var bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 app.use(express.static('static'));
+
 
 //Routing betöltése
 require('./routes/routing')(app);
@@ -28,6 +31,6 @@ app.use((err, req, res, next) => {
     console.log(err);
 });
 
-var server = app.listen(3000, function() {
+const server = app.listen(3000, function() {
     console.log("On: 3000");
 });
