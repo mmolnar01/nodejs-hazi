@@ -30,13 +30,13 @@
                         <%= villamos.forgalomba %>
                     </td>
                     <td style="white-space: nowrap">
-                        <a href="/villamos/123/edit/<%= villamos._id %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></a>
-                        <a href="/villamos/123/del/<%= villamos._id %>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                        <a href="/villamos/<%= kocsiszin._id %>/edit/<%= villamos._id %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></a>
+                        <a href="/villamos/<%= kocsiszin._id %>/del/<%= villamos._id %>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             <% }); %>
         </table>
-        <a href="/villamos/123/new" class="btn btn-block btn-primary">Új villamos</a>
+        <a href="/villamos/<%= kocsiszin._id %>/new" class="btn btn-block btn-primary">Új villamos</a>
         <a href="/kocsiszin" class="btn btn-block btn-secondary">Vissza a kocsiszínekhez</a>
       </div>
     </div>

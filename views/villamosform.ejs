@@ -29,8 +29,8 @@
                     <label for="inputForgalombaAllas" class="form-label">Forgalomba állás</label>
                     <input type="date" class="form-control" id="forgalomba" name="forgalomba" value="<%=(typeof villamos === 'undefined') ? '' : villamos.forgalomba %>">
                   </div>
-                  <input type="submit" class="btn btn-primary" href="/villamos/123" value="Mentés és vissza"/>
-                <a class="btn btn-secondary" href="/villamos/123">Vissza</a>
+                  <input type="submit" class="btn btn-primary" href="/villamos/<%= kocsiszin._id %>" value="Mentés és vissza"/>
+                <a class="btn btn-secondary" href="/villamos/<%= kocsiszin._id %>">Vissza</a>
               </form>
         </div>
       </div>

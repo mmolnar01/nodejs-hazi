@@ -24,17 +24,12 @@ module.exports = function (objectreposity) {
         res.locals.villamos.forgalomba = req.body.forgalomba;
         res.locals.villamos._telep = res.locals.kocsiszin._id;
 
-        res.locals.villamos.save()
+        return res.locals.villamos.save()
         .then(() => {
             return res.redirect(`/villamos/${res.locals.kocsiszin._id}`);
         })
         .catch((err) => {
             return next(err);
         })
-
-        console.log("Villamos létrehozása");
-        res.redirect('/villamos/123');
-
-        return next();
     };
 };

@@ -11,7 +11,7 @@ module.exports = function (objectreposity) {
             console.log("Valami");
             return next();
         }
-        VillamosModel.find({_telep: res.locals.kocsiszin._id})
+        return VillamosModel.find({_telep: res.locals.kocsiszin._id})
         .then((villamosok) => {
             res.locals.villamosok = villamosok;
             return next();

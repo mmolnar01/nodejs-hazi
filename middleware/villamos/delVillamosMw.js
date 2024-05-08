@@ -10,7 +10,7 @@ module.exports = function (objectreposity) {
             return next();
         }
 
-        res.locals.villamos.deleteOne()
+        return res.locals.villamos.deleteOne()
         .then(() => {
             console.log("Torles sikeres");
             return res.redirect(`/befott/${res.locals.kocsiszin._id}`);

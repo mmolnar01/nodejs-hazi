@@ -10,7 +10,7 @@ module.exports = function (objectreposity) {
 
     return function (req, res, next) {
         //console.log(req.params);
-        KocsiszinModel.findOne({_id: req.params.kocsiszinid})
+        return KocsiszinModel.findOne({_id: req.params.kocsiszinid})
         .then((kocsiszin) => {
             res.locals.kocsiszin = kocsiszin;
             console.log(res.locals.kocsiszin)
@@ -19,6 +19,5 @@ module.exports = function (objectreposity) {
         .catch((err) => {
             return next(err);
         })
-        return next();
     };
 };

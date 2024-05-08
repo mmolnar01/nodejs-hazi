@@ -24,16 +24,12 @@ module.exports = function (objectreposity) {
         res.locals.kocsiszin.cim = req.body.cim;
         res.locals.kocsiszin.dolgozok = req.body.dolgozok;
 
-        res.locals.kocsiszin.save()
+        return res.locals.kocsiszin.save()
         .then(() => {
             return res.redirect('/kocsiszin');
         })
         .catch((err) => {
             return next(err);
         })
-
-        //console.log("Kocsiszin létrehozása");
-        //res.redirect('/kocsiszin');
-        //return next();
     };
 };

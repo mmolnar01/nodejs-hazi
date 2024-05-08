@@ -9,7 +9,7 @@ module.exports = function (objectreposity) {
     const KocsiszinModel = requireOption(objectreposity, 'KocsiszinModel');
 
     return function (req, res, next) {
-        KocsiszinModel.find({})
+        return KocsiszinModel.find({})
         .then((kocsiszinek) => {
             res.locals.kocsiszinek = kocsiszinek;
             return next();
@@ -18,15 +18,4 @@ module.exports = function (objectreposity) {
             return next(err);
         })
     };
-
-    /*return function(req, res, next) {
-        KocsiszinModel.find({}, (err, kocsiszinek) => {
-            if (err) {
-                return next(err);
-            }
-
-            res.locals.kocsiszinek = kocsiszinek;
-            return next();
-        });
-    };*/
 };

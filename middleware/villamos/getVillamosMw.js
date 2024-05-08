@@ -8,7 +8,7 @@ module.exports = function (objectreposity) {
     const VillamosModel = requireOption(objectreposity, 'VillamosModel');
     return function (req, res, next) {
 
-        VillamosModel.findOne({_id: req.params.villamosid})
+        return VillamosModel.findOne({_id: req.params.villamosid})
         .then((villamos) => {
             res.locals.villamos = villamos;
             console.log(res.locals.villamos)
@@ -17,7 +17,5 @@ module.exports = function (objectreposity) {
         .catch((err) => {
             return next(err);
         })
-
-        return next();
     };
 };
