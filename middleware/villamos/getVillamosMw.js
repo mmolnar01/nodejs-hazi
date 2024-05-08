@@ -2,16 +2,21 @@
  * Lekérdezi egy villamos adatatait az adatbázisból
  */
 
+const requireOption = require('../requireOption');
+
 module.exports = function (objectreposity) {
+    const VillamosModel = requireOption(objectreposity, 'VillamosModel');
     return function (req, res, next) {
 
-        res.locals.villamos = 
-        {
-            _id: 'id1',
-            tipus: 'Tatra T5C5',
-            palyaszam: '4014',
-            forgalomba: '1980'
-        };
+        VillamosModel.findOne({_id: req.params.villamosid})
+        .then((villamos) => {
+            res.locals.villamos = villamos;
+            console.log(res.locals.villamos)
+            return next();
+        })
+        .catch((err) => {
+            return next(err);
+        })
 
         return next();
     };

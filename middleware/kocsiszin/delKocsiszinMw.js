@@ -28,7 +28,7 @@ module.exports = function (objectreposity) {
             return next(err);
         })
 
-        //res.redirect('/kocsiszin');
-        //return next();
+        res.redirect('/kocsiszin');
+        return next();
     };
 };
