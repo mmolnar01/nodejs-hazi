@@ -4,7 +4,7 @@
 
 const requireOption = require('../requireOption');
 
-module.exports = function (objectreposity) {
+module.exports = function (objectrepository) {
     return function(req, res, next) {
         if (typeof res.locals.villamos === 'undefined') {
             return next();

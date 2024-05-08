@@ -4,9 +4,9 @@
 
 const requireOption = require('../requireOption');
 
-module.exports = function (objectreposity) {
+module.exports = function (objectrepository) {
 
-    const KocsiszinModel = requireOption(objectreposity, 'KocsiszinModel');
+    const KocsiszinModel = requireOption(objectrepository, 'KocsiszinModel');
 
     return function (req, res, next) {
         //console.log(req.params);

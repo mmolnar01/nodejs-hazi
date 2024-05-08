@@ -4,8 +4,8 @@
 
 const requireOption = require('../requireOption');
 
-module.exports = function (objectreposity) {
-    const VillamosModel = requireOption(objectreposity, 'VillamosModel');
+module.exports = function (objectrepository) {
+    const VillamosModel = requireOption(objectrepository, 'VillamosModel');
     return function (req, res, next) {
 
         return VillamosModel.findOne({_id: req.params.villamosid})
