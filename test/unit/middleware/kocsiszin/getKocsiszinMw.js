@@ -1,15 +1,12 @@
 const expect = require('chai').expect;
-//const expect = import('chai').expect;
 const getKocsiszinMw = require('../../../../middleware/kocsiszin/getKocsiszinMw');
-const sinon = require('sinon');
-const Kocsiszin = require('../../../../models/kocsiszin');
 
 describe('getKocsiszin middleware ', function () {
-    it('should return a kocsiszin', function(done) {
+    it('should set res.locals.kocsiszin with a kocsiszin object from db', function(done) {
         const mw = getKocsiszinMw({
             KocsiszinModel: {
                 findOne: (p1) => {
-                    expect(p1).to.be.eql({_id: '10'});
+                    expect(p1).to.be.eql({_id: '11'});
                     return Promise.resolve('mockkocsiszin');
                 }
             }
@@ -21,13 +18,39 @@ describe('getKocsiszin middleware ', function () {
 
         mw({
             params: {
-                kocsiszinid: '10'
+                kocsiszinid: '11'
             }
         }, 
         resMock, 
-        () => {
-            console.log(resMock.locals.kocsiszin);
+        (err) => {
+            expect(err).to.be.eql(undefined);
             expect(resMock.locals).to.be.eql({kocsiszin: 'mockkocsiszin'});
+            done();
+        })
+    });
+
+    it('should call next with error in case of problem with db', function(done) {
+        const mw = getKocsiszinMw({
+            KocsiszinModel: {
+                findOne: (p1) => {
+                    expect(p1).to.be.eql({_id: '11'});
+                    return Promise.reject('adatbazishiba');
+                }
+            }
+        });
+
+        const resMock = {
+            locals: {}
+        };
+
+        mw({
+            params: {
+                kocsiszinid: '11'
+            }
+        }, 
+        resMock, 
+        (err) => {
+            expect(err).to.be.eql('adatbazishiba');
             done();
         })
     });
