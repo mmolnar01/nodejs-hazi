@@ -2,30 +2,36 @@ const expect = require('chai').expect;
 //const expect = import('chai').expect;
 const getKocsiszinMw = require('../../../../middleware/kocsiszin/getKocsiszinMw');
 const sinon = require('sinon');
-//const Kocsiszin = require('../../../../models/kocsiszin');
+const Kocsiszin = require('../../../../models/kocsiszin');
 
-/*describe('getKocsiszin middleware ', function () {
+describe('getKocsiszin middleware ', function () {
     it('should return a kocsiszin', function(done) {
         const mw = getKocsiszinMw({
             KocsiszinModel: {
                 findOne: (p1) => {
-                    //expect(p1).to.be.eql({_id: '10'});
-                    return('mokkocsiszin');
+                    expect(p1).to.be.eql({_id: '10'});
+                    return Promise.resolve('mockkocsiszin');
                 }
             }
         });
+
+        const resMock = {
+            locals: {}
+        };
 
         mw({
             params: {
                 kocsiszinid: '10'
             }
-        }, {
-            locals: {}
-        }, () => {
+        }, 
+        resMock, 
+        () => {
+            console.log(resMock.locals.kocsiszin);
+            expect(resMock.locals).to.be.eql({kocsiszin: 'mockkocsiszin'});
             done();
         })
     });
-});*/
+});
 
 /*describe('getKocsiszin middleware', function() {
     it('should return a kocsiszin', async function() {
@@ -76,14 +82,16 @@ const sinon = require('sinon');
     });
 });*/
 
-describe('getKocsiszin middleware', function() {
+/*describe('getKocsiszin middleware', function() {
     it('should return a kocsiszin', async function() {
         // Create a mock KocsiszinModel
         const KocsiszinModel = {
             findOne: (query) => {
                 return new Promise((resolve, reject) => {
                     if (query._id === '10') {
+                        //expect(query._id).to.be.eql({_id: '10'});
                         resolve('mokkocsiszin'); // Mock response
+                        //resolve({ kocsiszinid: query._id, name: 'mokkocsiszin' });
                     } else {
                         reject(new Error('Kocsiszin not found'));
                     }
@@ -116,7 +124,7 @@ describe('getKocsiszin middleware', function() {
             mw(req, res, (err) => {
                 try {
                     expect(err).to.be.undefined;
-                    expect(res.locals.kocsiszin).to.equal('mokkocsiszin');
+                    //expect(res.locals.kocsiszin).to.equal('mokkocsiszin');
                     expect(res.locals.kocsiszin.kocsiszinid).to.be.eql({_id: '10'});
                     resolve();
                 } catch (e) {
@@ -125,4 +133,4 @@ describe('getKocsiszin middleware', function() {
             });
         });
     });
-});
+});*/
