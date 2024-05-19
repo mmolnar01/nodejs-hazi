@@ -3,7 +3,7 @@
  */
 const requireOption = require('../requireOption');
 
-module.exports = function (objectreposity) {
+module.exports = function (objectrepository) {
     return function (req, res, next) {
         console.log(res.locals.kocsiszin);
         if (typeof res.locals.kocsiszin === 'undefined') {
